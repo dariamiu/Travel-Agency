@@ -52,18 +52,10 @@ public class TravelAgencyVacationController {
                 Destination destination = destinationService.getByName(destinationName);
 
                 vacationPackageValidator.validateDates(startDate,endDate);
-
-                vacationPackageService.createVacation(new VacationPackage(
-                        name,price,
-                        availablePlaces, 0,
-                        startDate,
-                        endDate,
-                        "NOT_BOOKED", destination
-
-                ));
+                vacationPackageService.createVacation(new VacationPackage(name,price, availablePlaces, 0,
+                        startDate, endDate, "NOT_BOOKED", destination));
                 loadTable();
-                }
-                catch (RuntimeException ex){
+                }catch (RuntimeException ex){
                     travelAgencyVacationView.displayErrorMessage(ex);
                 }
             }
@@ -73,7 +65,6 @@ public class TravelAgencyVacationController {
         travelAgencyVacationView.deleteVacationActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 travelAgencyVacationView.setRows(travelAgencyVacationView.getVacations().getSelectedRows());
                 int[] rows = travelAgencyVacationView.getRows();
                 if (rows.length == 0) throw new RuntimeException("no rows selected!");
@@ -124,7 +115,6 @@ public class TravelAgencyVacationController {
                             status,
                             destination);
                     vacationPackageService.updateAllVacation(vacationPackages.get(rows[0]).getName(),vacationPackage);
-                    System.out.println(vacationPackages.get(rows[0]).getName());
                     loadTable();
 
                 }catch (RuntimeException exception){

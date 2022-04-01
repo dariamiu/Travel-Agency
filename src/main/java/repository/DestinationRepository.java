@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.util.List;
 
 public class DestinationRepository {
+
     private final EntityManagerFactory entityManagerFactory =
             Persistence.createEntityManagerFactory("travel_agency");
 
@@ -22,8 +23,7 @@ public class DestinationRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT d from Destination d", Destination.class).getResultList();
+            return em.createQuery("SELECT d from Destination d", Destination.class).getResultList();
         }catch (NoResultException e){
             System.out.println("No destination found");
         }
@@ -39,8 +39,8 @@ public class DestinationRepository {
         }
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
-        Destination destination1 = em.createQuery(
-                "SELECT d from Destination d WHERE d.name = :name", Destination.class).setParameter("name",destination.getName()).getSingleResult();
+        Destination destination1 = em.createQuery("SELECT d from Destination d WHERE d.name = :name", Destination.class).
+                setParameter("name",destination.getName()).getSingleResult();
         em.remove(destination1);
         em.getTransaction().commit();
         em.close();
@@ -50,8 +50,7 @@ public class DestinationRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            Query q = em.createQuery(
-                    "UPDATE Destination SET description = :description WHERE name = :name");
+            Query q = em.createQuery("UPDATE Destination SET description = :description WHERE name = :name");
             q.setParameter("description",description);
             q.setParameter("name",name);
             q.executeUpdate();
@@ -67,8 +66,8 @@ public class DestinationRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT d from Destination d WHERE d.name = :name", Destination.class).setParameter("name",name).getSingleResult();
+            return em.createQuery("SELECT d from Destination d WHERE d.name = :name", Destination.class).
+                    setParameter("name",name).getSingleResult();
         }catch (NoResultException e){
             System.out.println("No destination found");
         }

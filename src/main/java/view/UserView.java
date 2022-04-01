@@ -9,8 +9,6 @@ public class UserView extends AppFrame{
     private JButton bookVacation = new JButton("Book Vacation");
     private JButton viewBookedVacations = new JButton("View my Booked Vacations");
 
-
-
     public UserView(){
         this.setTitle("User View");
         this.setSize(400, 400);
@@ -32,14 +30,10 @@ public class UserView extends AppFrame{
      * @param panel the panel in the JFrame
      */
     private void initializeForm(JPanel panel){
-
-
         viewBookedVacations.setBounds(100,50,200,20);
         panel.add(viewBookedVacations);
         bookVacation.setBounds(100,100,200,20);
         panel.add(bookVacation);
-
-
 
     }
 

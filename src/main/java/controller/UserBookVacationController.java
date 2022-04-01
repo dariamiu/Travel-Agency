@@ -42,7 +42,8 @@ public class UserBookVacationController {
 
     private void loadVacations(){
         this.vacationPackages = vacationPackageService.getAll();
-        userBookVacationView.initializeTable(vacationPackages.stream().filter(v-> !v.getStatus().equals("BOOKED")).collect(Collectors.toList()));
+        userBookVacationView.initializeTable(vacationPackages.stream().
+                filter(v-> !v.getStatus().equals("BOOKED")).collect(Collectors.toList()));
     }
 
     private void setDestinations(){
@@ -57,11 +58,14 @@ public class UserBookVacationController {
         System.out.println(startDate);
         System.out.println(endDate);
         List<VacationPackage> result = new ArrayList<>();
-        result  = vacationPackages.stream().filter(!destination.equals("###") ? m-> m.getDestination().getName().equals(destination) : m -> true ).
+        result  = vacationPackages.stream().
+                filter(!destination.equals("###") ? m-> m.getDestination().getName().equals(destination) : m -> true ).
                 filter(!priceMin.equals((float)-1)? m -> m.getPrice() >= priceMin: m -> true).
                 filter(!priceMax.equals((float)-1)? m -> m.getPrice() <= priceMax: m -> true).
-                filter(!startDate.equals(LocalDate.of(1800,1,1))? m -> m.getStartDate().isAfter(startDate) || m.getStartDate().isEqual(startDate): m -> true).
-                filter(!endDate.equals(LocalDate.of(1800,1,1))? m -> m.getEndDate().isBefore(endDate) || m.getEndDate().isEqual(endDate) : m -> true).collect(Collectors.toList());
+                filter(!startDate.equals(LocalDate.of(1800,1,1))?
+                        m -> m.getStartDate().isAfter(startDate) || m.getStartDate().isEqual(startDate): m -> true).
+                filter(!endDate.equals(LocalDate.of(1800,1,1))?
+                        m -> m.getEndDate().isBefore(endDate) || m.getEndDate().isEqual(endDate) : m -> true).collect(Collectors.toList());
 
         return result;
     }
@@ -78,7 +82,6 @@ public class UserBookVacationController {
                 List<VacationPackage> vacationPackages = user.getBookedVacationsList();
                 Boolean canBook = true;
                 for (VacationPackage vacationPackage1 : vacationPackages) {
-                    System.out.println("------------------" + vacationPackage1.getName());
                         if (vacationPackage1.getName().equals(row[0])){
                             canBook = false;
                         }

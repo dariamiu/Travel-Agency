@@ -36,7 +36,8 @@ public class TravelAgencyDestinationController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try{
-                    destinationService.createDestination(new Destination(destinationValidator.validateNonEmptyStringField(travelAgencyDestinationView.getName()),
+                    destinationService.createDestination(
+                            new Destination(destinationValidator.validateNonEmptyStringField(travelAgencyDestinationView.getName()),
                             travelAgencyDestinationView.getDetails()));
                     loadTable();
                 }catch (RuntimeException ex){
@@ -50,7 +51,6 @@ public class TravelAgencyDestinationController {
         travelAgencyDestinationView.deleteActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                     travelAgencyDestinationView.setRows(travelAgencyDestinationView.getDestinationsTable().getSelectedRows());
                     int[] rows = travelAgencyDestinationView.getRows();
                     if (rows.length == 0) throw new RuntimeException("no rows selected!");
@@ -59,7 +59,6 @@ public class TravelAgencyDestinationController {
                         destinationService.deleteDestination(destinationService.getByName(row[0]));
                     }
                     loadTable();
-
             }
         });
 

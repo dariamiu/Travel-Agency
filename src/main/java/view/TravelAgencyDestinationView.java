@@ -21,19 +21,11 @@ public class TravelAgencyDestinationView extends AppFrame{
     private JTable destinationsTable;
     private JScrollPane pane;
     private int[] rows;
-
-
     private JButton addDestination = new JButton("ADD");
-
     private JButton deleteDestination = new JButton("DELETE");
     private JButton updateDestination = new JButton("UPDATE");
-
-
     private JTextField nameText = new JTextField();
     private JTextArea detailsText = new JTextArea(20,20);
-
-
-
 
     public TravelAgencyDestinationView(){
         this.setTitle("Agency View");

@@ -23,23 +23,15 @@ public class TravelAgencyVacationView extends AppFrame{
     private JTable vacations;
     private JScrollPane pane;
     private int[] rows;
-
-
     private JButton addVacation = new JButton("ADD");
-
-
     private JButton deleteVacation = new JButton("DELETE");
     private JButton updateVacation = new JButton("UPDATE");
-
-
     private JTextField nameText = new JTextField();
-
     private JTextField startDate = new JTextField();
     private JTextField endDate = new JTextField();
     private JTextField price = new JTextField();
     private JTextField availablePlaces = new JTextField();
     private JTextField destination = new JTextField();
-
     private JComboBox cbNames;
 
 

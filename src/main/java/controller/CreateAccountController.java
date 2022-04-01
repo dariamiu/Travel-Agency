@@ -12,6 +12,7 @@ public class CreateAccountController {
     private CreateAccountView createView;
     private UserValidator userValidator;
     private UserService userService;
+
     public CreateAccountController(){
         createView = new CreateAccountView();
         userValidator = new UserValidator();
@@ -27,11 +28,8 @@ public class CreateAccountController {
                 try {
                     userValidator.validateInputsCreate(createView.getFullName(),createView.getEmail(),
                             String.valueOf(createView.getPasswordText()), createView.getPhoneNumber());
-
                     User newUser = userService.findUserByEmail(createView.getEmail());
-
                     userValidator.validateNewUser(newUser);
-
                     userService.createUser(new User(createView.getFullName(),createView.getEmail(),
                             String.valueOf(createView.getPasswordText()),createView.getPhoneNumber()));
                     createView.displayInformationMessage("Account created");

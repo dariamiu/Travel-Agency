@@ -7,10 +7,8 @@ import java.awt.event.ActionListener;
 
 public class TravelAgencyView extends AppFrame{
 
-
     private JButton manageDestinations = new JButton("Manage Destinations");
     private JButton manageVacations = new JButton("Manage Vacations");
-
 
 
     public TravelAgencyView(){
@@ -34,14 +32,10 @@ public class TravelAgencyView extends AppFrame{
      * @param panel the panel in the JFrame
      */
     private void initializeForm(JPanel panel){
-
-
         manageVacations.setBounds(100,50,200,20);
         panel.add(manageVacations);
         manageDestinations.setBounds(100,100,200,20);
         panel.add(manageDestinations);
-
-
 
     }
 

@@ -21,15 +21,9 @@ public class UserBookVacationView extends AppFrame{
     private JTable vacations;
     private JScrollPane pane;
     private int[] rows;
-
-
     private JComboBox cbNames;
-
-
     private JButton addVacation = new JButton("BOOK VACATION");
     private JButton filter = new JButton("FILTER");
-
-
     private JTextField startDate = new JTextField();
     private JTextField endDate = new JTextField();
     private JTextField price = new JTextField();
@@ -122,7 +116,8 @@ public class UserBookVacationView extends AppFrame{
      * method to initialize and update the table with data
      */
     public void initializeTable(List<VacationPackage> vacationPackages){
-        String[] columnNames = {"Name","Destination","Start Date", "End Date", "Price", "Number of Places", "Number of Taken Places"};
+        String[] columnNames = {"Name","Destination","Start Date", "End Date", "Price", "Number of Places",
+                "Number of Taken Places"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0){
             @Override
             public boolean isCellEditable(int row, int column)

@@ -9,6 +9,7 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class VacationUserRepository {
+
     private final EntityManagerFactory entityManagerFactory =
             Persistence.createEntityManagerFactory("travel_agency");
 

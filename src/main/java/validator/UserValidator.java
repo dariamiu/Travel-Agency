@@ -73,12 +73,6 @@ public class UserValidator {
         }
     }
 
-    public void validatePrices(Float min, Float max){
-        if(min > max) {
-            throw new RuntimeException("Min price is greater than max price!");
-        }
-    }
-
     public LocalDate validateDate(String date){
         if(date.isBlank()){
             return LocalDate.of(1800,1,1);

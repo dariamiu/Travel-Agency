@@ -55,7 +55,8 @@ public class UserViewBookedView extends AppFrame{
      * method to initialize and update the table with data
      */
     public void initializeTable(List<VacationPackage> vacationPackages){
-        String[] columnNames = {"Name","Destination","Start Date", "End Date", "Price", "Number of Places", "Number of Taken Places"};
+        String[] columnNames = {"Name","Destination","Start Date", "End Date", "Price", "Number of Places",
+                "Number of Taken Places"};
         DefaultTableModel model = new DefaultTableModel(columnNames, 0){
             @Override
             public boolean isCellEditable(int row, int column)

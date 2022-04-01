@@ -8,6 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 public class VacationPackageRepository {
+
     private final EntityManagerFactory entityManagerFactory =
             Persistence.createEntityManagerFactory("travel_agency");
 
@@ -23,8 +24,7 @@ public class VacationPackageRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT u from VacationPackage u WHERE u.destination.name = :name",
+            return em.createQuery("SELECT u from VacationPackage u WHERE u.destination.name = :name",
                     VacationPackage.class).setParameter("name",name).getResultList();
         }catch (NoResultException e){
             System.out.println("No vacation found");
@@ -38,9 +38,8 @@ public class VacationPackageRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT u from VacationPackage u WHERE u.name = :name",
-                    VacationPackage.class).setParameter("name",name).getSingleResult();
+            return em.createQuery("SELECT u from VacationPackage u WHERE u.name = :name", VacationPackage.class).
+                    setParameter("name",name).getSingleResult();
         }catch (NoResultException e){
             System.out.println("No vacation found");
         }
@@ -54,7 +53,8 @@ public class VacationPackageRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         VacationPackage vacationPackage = em.createQuery(
-                "SELECT d from VacationPackage d WHERE d.name = :name", VacationPackage.class).setParameter("name",name).getSingleResult();
+                "SELECT d from VacationPackage d WHERE d.name = :name", VacationPackage.class).
+                setParameter("name",name).getSingleResult();
         List<User> users = vacationPackage.getUsers();
         for (User user : users) {
             user.getBookedVacationsList().remove(vacationPackage);
@@ -64,8 +64,6 @@ public class VacationPackageRepository {
         em.getTransaction().commit();
         em.close();
     }
-
-
 
 
     public void updateTakenPlacesAndStatus(String name, Integer places, String status){
@@ -86,30 +84,12 @@ public class VacationPackageRepository {
 
     }
 
-    public void updateStatus(String name, String status){
-        EntityManager em = entityManagerFactory.createEntityManager();
-        em.getTransaction().begin();
-        try{
-            Query q = em.createQuery(
-                    "UPDATE VacationPackage SET status = :status WHERE name = :name ");
-            q.setParameter("status", status);
-            q.setParameter("name",name);
-            q.executeUpdate();
-        }catch (NoResultException e){
-            System.out.println("No destination with that name found");
-        }
-        em.getTransaction().commit();
-        em.close();
-
-    }
-
 
     public List<VacationPackage> getAll(){
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT v from VacationPackage v", VacationPackage.class).getResultList();
+            return em.createQuery("SELECT v from VacationPackage v", VacationPackage.class).getResultList();
         }catch (NoResultException e){
             System.out.println("No destination found");
         }
@@ -119,7 +99,6 @@ public class VacationPackageRepository {
     }
 
     public void updateAllVacation(String name, VacationPackage vacationPackage){
-
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{

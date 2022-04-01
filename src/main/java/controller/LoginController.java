@@ -33,7 +33,7 @@ public class LoginController {
             @Override
             public void actionPerformed(ActionEvent e) {
                     try{
-                        userValidator.validateCredentials(loginView.getUsername(), String.valueOf(loginView.getPasswordText()));
+                        userValidator.validateCredentials(loginView.getUsername(),String.valueOf(loginView.getPasswordText()));
                         User user = userService.findUserByEmail(loginView.getUsername());
                         userValidator.validatePassword(user.getPassword(),String.valueOf(loginView.getPasswordText()));
                         new UserController(user);

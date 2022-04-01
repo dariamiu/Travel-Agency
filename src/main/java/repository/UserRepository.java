@@ -24,8 +24,8 @@ public class UserRepository {
         EntityManager em = entityManagerFactory.createEntityManager();
         em.getTransaction().begin();
         try{
-            return em.createQuery(
-                    "SELECT u from User u WHERE u.email = :email", User.class).setParameter("email",email).getSingleResult();
+            return em.createQuery("SELECT u from User u WHERE u.email = :email", User.class).
+                    setParameter("email",email).getSingleResult();
         }catch (NoResultException e){
             System.out.println("No user found");
         }
